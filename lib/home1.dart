@@ -37,7 +37,13 @@ class _Home1State extends State<Home1> {
     'CEMENT FACTORY',
     'BLM PLANTS',
   ];
-
+  List<String> img1 = [
+    'assets/b1.jpeg',
+    'assets/b2.jpeg',
+    'assets/b3.jpeg',
+    'assets/b4.jpeg',
+    'assets/b5.jpeg',
+  ];
   @override
   Widget build(BuildContext context) {
     return
@@ -156,7 +162,7 @@ class _Home1State extends State<Home1> {
             height: 25.h,
           ),
           CarouselSlider.builder(
-            itemCount: img.length,
+            itemCount: img1.length,
             itemBuilder: (context, index, realindex) {
               var height = 170.h;
               var width = MediaQuery.of(context).size.width;
@@ -169,8 +175,8 @@ class _Home1State extends State<Home1> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(9.r),
                   child: Image.asset(
-                    img[index].toString(),
-                    fit: BoxFit.fill,
+                    img1[index].toString(),
+                    fit: BoxFit.cover,
                   ),
                 ),
               );
