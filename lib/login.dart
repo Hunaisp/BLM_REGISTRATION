@@ -1,4 +1,4 @@
-import 'package:blm_registration/home.dart';
+
 import 'package:blm_registration/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 375.w,
                   height: 256.h,
                   child: Image.asset(
-                    'assets/1.jpg',
+                    'assets/splash_logo.png',
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -1,8 +1,10 @@
 import 'package:blm_registration/login.dart';
 import 'package:blm_registration/profile.dart';
 import 'package:blm_registration/renewal_recipt.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'investment.dart';
@@ -16,20 +18,44 @@ class Home1 extends StatefulWidget {
 }
 
 class _Home1State extends State<Home1> {
+  final _controller = CarouselController();
+  List<String> img = [
+    'assets/a1.jpg',
+    'assets/a2.jpg',
+    'assets/a4.jpg',
+    'assets/a5.jpg',
+    'assets/a6.jpg',
+    'assets/a7.jpg',
+    'assets/a8.jpg',
+  ];
+  List<String> txt = [
+    'LAND DEVELOPMENT',
+    'HOUSING DEVELOPMENT',
+    'CIVIL SUPPLIES',
+    'BLM JEWELLERY',
+    'BLM COLLEGE',
+    'CEMENT FACTORY',
+    'BLM PLANTS',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+     Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color(0xFFFF54B435),
         actions: [
-          IconButton(onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ProfileEightPage()));
-          }, icon:   Icon(
-            Icons.account_circle,
-            color: Colors.white,
-          ),),
-
+          IconButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => ProfileEightPage()));
+            },
+            icon: Icon(
+              Icons.account_circle,
+              color: Colors.white,
+            ),
+          ),
           SizedBox(
             width: 25.w,
           )
@@ -71,22 +97,26 @@ class _Home1State extends State<Home1> {
               leading: Icon(Icons.trending_up),
               title: const Text('Investment Form'),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Investment()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => Investment()));
               },
-            ), ListTile(
+            ),
+            ListTile(
               leading: const Icon(Icons.card_membership),
               title: const Text('Membership Form'),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Membership()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => Membership()));
               },
-            ), ListTile(
+            ),
+            ListTile(
               leading: const Icon(Icons.autorenew),
               title: const Text('Renewal Details '),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Renewal()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => Renewal()));
               },
             ),
-
             ListTile(
               leading: const Icon(Icons.notification_add_outlined),
               title: const Text(' Notification '),
@@ -100,7 +130,8 @@ class _Home1State extends State<Home1> {
               onTap: () {
                 Navigator.pop(context);
               },
-            ),  ListTile(
+            ),
+            ListTile(
               leading: const Icon(Icons.feed_outlined),
               title: const Text('Feedback '),
               onTap: () {
@@ -111,14 +142,119 @@ class _Home1State extends State<Home1> {
               leading: const Icon(Icons.logout),
               title: const Text('LogOut'),
               onTap: () {
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                    builder: (context) =>  LoginScreen()), (
-                    route) => false);
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                        (route) => false);
               },
             ),
           ],
         ),
-      ), //Drawer
+      ),
+      body: ListView(
+        children: [
+          SizedBox(
+            height: 25.h,
+          ),
+          CarouselSlider.builder(
+            itemCount: img.length,
+            itemBuilder: (context, index, realindex) {
+              var height = 170.h;
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                height: height,
+                width: width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(9.r),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(9.r),
+                  child: Image.asset(
+                    img[index].toString(),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              );
+            },
+            carouselController: _controller,
+            options: CarouselOptions(
+              height: 170.h,
+              enlargeCenterPage: true,
+              autoPlay: true,
+              aspectRatio: 16 / 9,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              viewportFraction: 0.95,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20.w, top: 20.h),
+            child: Text(
+              'Services',
+              style: TextStyle(
+                  color: Color(0xff000000),
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          SizedBox(
+            height: 13.h,
+          ),
+          GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(), // Disable scrolling for the grid
+            children: List.generate(
+              img.length,
+                  (index) {
+                return Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Card(
+                    elevation: 2,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage('img.png'),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10.0),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 106,
+                            child: Image.asset(
+                              img[index],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Center(
+                            child: Text(
+                              txt[index],
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Color(0xff000000),
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
+
   }
 }

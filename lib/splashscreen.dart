@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'home.dart';
+
 import 'home1.dart';
 import 'login.dart';
 
@@ -24,7 +24,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => Home1()),
-                (route) => false);}
+                (route) => false);
+
+      }
       else{
 
         Navigator.of(context).pushAndRemoveUntil(

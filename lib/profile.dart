@@ -18,7 +18,7 @@ import 'assets.dart';
 
 
 class ProfileEightPage extends StatelessWidget {
-  static const String path = "lib/src/pages/profile/profile8.dart";
+
 
   const ProfileEightPage({super.key});
 
@@ -36,7 +36,7 @@ class ProfileEightPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               ProfileHeader(
-                avatar: NetworkImage(avatars[0]),
+                avatar: AssetImage("assets/2.jpg"),
                 coverImage: NetworkImage(images[1]),
                 title: "Abhishek Mishra",
                 subtitle: "Manager",
