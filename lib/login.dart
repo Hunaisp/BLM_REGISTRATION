@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'home1.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -37,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 375.w,
                   height: 256.h,
                   child: Image.asset(
-                    'assets/login_screen.jpg',
+                    'assets/1.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -209,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     final isValid = form_key.currentState?.validate();
                     if (isValid == true) {
                       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                          builder: (context) =>  HomeScreen()), (
+                          builder: (context) =>  Home1()), (
                           route) => false);
                     }
                   },

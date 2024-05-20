@@ -9,7 +9,8 @@ import 'membership_form.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Color(0xFFFF54B435),
+    return Scaffold(backgroundColor:Colors.green
+      ,
       body: Column(
         children: <Widget>[
 

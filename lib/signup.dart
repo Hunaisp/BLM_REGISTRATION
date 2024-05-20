@@ -39,7 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: 375.w,
                   height: 256.h,
                   child: Image.asset(
-                    'assets/login_screen.jpg',
+                    'assets/1.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
