@@ -1,5 +1,7 @@
+import 'package:blm_registration/gallery.dart';
 import 'package:blm_registration/login.dart';
 import 'package:blm_registration/profile.dart';
+import 'package:blm_registration/quick_pay.dart';
 import 'package:blm_registration/renewal_recipt.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'about_us.dart';
+import 'chairman message.dart';
 import 'investment.dart';
 import 'membership_form.dart';
 
@@ -38,11 +42,13 @@ class _Home1State extends State<Home1> {
     'BLM PLANTS',
   ];
   List<String> img1 = [
-    'assets/b1.jpeg',
+    'assets/b1.jpg',
     'assets/b2.jpeg',
     'assets/b3.jpeg',
     'assets/b4.jpeg',
     'assets/b5.jpeg',
+    'assets/b6.jpg',
+    'assets/b7.jpg',
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,9 @@ class _Home1State extends State<Home1> {
      Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xFFFF54B435),
+        backgroundColor: Color(0xFFFF54B435),centerTitle: true,
+        title: Text('BLM'),
+
         actions: [
           IconButton(
             onPressed: () {
@@ -116,6 +124,14 @@ class _Home1State extends State<Home1> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.message_outlined),
+              title: const Text('Chairman Message'),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => ChatScreen()));
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.autorenew),
               title: const Text('Renewal Details '),
               onTap: () {
@@ -123,6 +139,7 @@ class _Home1State extends State<Home1> {
                     .push(MaterialPageRoute(builder: (_) => Renewal()));
               },
             ),
+
             ListTile(
               leading: const Icon(Icons.notification_add_outlined),
               title: const Text(' Notification '),
@@ -138,12 +155,37 @@ class _Home1State extends State<Home1> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.photo_library_outlined),
+              title: const Text('Gallery'),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => GalleryPage()));
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.feed_outlined),
               title: const Text('Feedback '),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              leading: const Icon(Icons.info_outline), // Change the icon to an appropriate one
+              title: const Text('About Us'), // Update the title text
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => AboutUs())); // Navigate to the AboutUs page
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.payment_outlined), // Use the outlined icon for Quick Pay
+              title: const Text('Quick Pay'), // Update the title text
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => QuickPay())); // Navigate to the QuickPay page
+              },
+            ),
+
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('LogOut'),
